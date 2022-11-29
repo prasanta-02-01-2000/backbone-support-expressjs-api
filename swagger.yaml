@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: BACKBONE SUPPORT REST API
+  description: MSSQL ExpressJS NodeJS REST API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/
+components:
+  # securitySchemes:
+  #   ApiKeyAuth:        # arbitrary name for the security scheme
+  #     type: apiKey
+  #     in: header       # can be "header", "query" or "cookie"
+  #     name: auth-token
+
+  schemas:
+    UserModel:
+      type: object
+      properties:
+        FULL_NAME:
+          type: string
+        USER_ROLE:
+          type: string
+        USER_EMAIL:
+          type: string
+        USER_MOBILE_NUMBER:
+          type: string
+        USER_GENDER:
+          type: string
+        USER_DOB:
+          type: string
+        USER_NAME:
+          type: string
+        PASSWORD:
+          type: string
+    
+
+paths:
+#User Activity
+#Add User Info
+  /post-user-info:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserModel"
+
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserModel"
+#Get All Customer Details
+  /get-user-info:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserModel"
+
+
+
+
+
+
+
+
+
+    
